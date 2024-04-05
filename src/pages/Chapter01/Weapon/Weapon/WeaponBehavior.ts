@@ -1,3 +1,3 @@
 export default interface WeaponBehavior {
-  useWeapon: () => void;
+  useWeapon: () => string;
 }
