@@ -1,18 +1,9 @@
-import Guide from '@/components/Guide';
-import { trim } from '@/utils/format';
 import { PageContainer } from '@ant-design/pro-components';
-import { useModel } from '@umijs/max';
-import styles from './index.less';
 
-const HomePage: React.FC = () => {
-  const { name } = useModel('global');
+export default function Home() {
   return (
-    <PageContainer ghost>
-      <div className={styles.container}>
-        <Guide name={trim(name)} />
-      </div>
+    <PageContainer title="首页">
+      <div>首页</div>
     </PageContainer>
   );
-};
-
-export default HomePage;
+}

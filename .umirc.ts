@@ -2,33 +2,13 @@ import { defineConfig } from '@umijs/max';
 
 export default defineConfig({
   antd: {},
-  access: {},
-  model: {},
-  initialState: {},
-  request: {},
   layout: {
     title: '@umijs/max',
   },
   routes: [
-    {
-      path: '/',
-      redirect: '/home',
-    },
-    {
-      name: '首页',
-      path: '/home',
-      component: './Home',
-    },
-    {
-      name: '权限演示',
-      path: '/access',
-      component: './Access',
-    },
-    {
-      name: ' CRUD 示例',
-      path: '/table',
-      component: './Table',
-    },
+    { path: '/', redirect: '/home' },
+    { path: '/home', component: './Home', name: '首页' },
+    { path: '/chapter01', component: './Chapter01', name: '01 | 设计模式介绍' },
   ],
   npmClient: 'pnpm',
 });
