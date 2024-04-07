@@ -2,9 +2,9 @@ import { Observer, Subject } from '@/pages/Chapter02/Weather/interface';
 
 class WeatherData implements Subject {
   private observers: Observer[] = [];
-  private temperature: number;
-  private humidity: number;
-  private pressure: number;
+  public temperature: number;
+  public humidity: number;
+  public pressure: number;
 
   constructor() {
     this.observers = [];
@@ -24,7 +24,7 @@ class WeatherData implements Subject {
 
   public notifyObservers() {
     this.observers.forEach((observer) => {
-      observer.update(this.temperature, this.humidity, this.pressure);
+      observer.update();
     });
   }
 

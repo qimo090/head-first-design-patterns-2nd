@@ -12,9 +12,9 @@ export default class HeatIndexDisplay implements Observer, DisplayElement {
     this.weatherData.registerObserver(this);
   }
 
-  public update(temp: number, humidity: number) {
-    this.temperature = temp;
-    this.humidity = humidity;
+  public update() {
+    this.temperature = this.weatherData.temperature;
+    this.humidity = this.weatherData.humidity;
     this.display();
   }
 
