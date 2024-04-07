@@ -19,6 +19,17 @@ export default defineConfig({
         },
       ],
     },
+    {
+      path: '/chapter02',
+      name: '02 | 观察者模式',
+      routes: [
+        {
+          path: '/chapter02/weather',
+          component: './Chapter02/Weather',
+          name: 'Weather',
+        },
+      ],
+    },
   ],
   npmClient: 'pnpm',
 });

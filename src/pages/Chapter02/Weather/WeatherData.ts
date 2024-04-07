@@ -1,29 +1,46 @@
-abstract class WeatherData {
-  getTemperature() {
-    return '';
+import { Observer, Subject } from '@/pages/Chapter02/Weather/interface';
+
+class WeatherData implements Subject {
+  private observers: Observer[] = [];
+  private temperature: number;
+  private humidity: number;
+  private pressure: number;
+
+  constructor() {
+    this.observers = [];
   }
 
-  getHumidity() {
-    return '';
+  public registerObserver(o: Observer) {
+    this.observers.push(o);
   }
 
-  getPressure() {
-    return '';
+  public removeObserver(o: Observer) {
+    const i = this.observers.indexOf(o);
+
+    if (i >= 0) {
+      this.observers.splice(i, 1);
+    }
   }
 
-  /**
-   * 任何时候气象测量被更新
-   * 这个方法被调用
-   */
+  public notifyObservers() {
+    this.observers.forEach((observer) => {
+      observer.update(this.temperature, this.humidity, this.pressure);
+    });
+  }
+
   public measurementsChanged() {
-    const temperature = this.getTemperature();
-    const humidity = this.getHumidity();
-    const pressure = this.getPressure();
+    this.notifyObservers();
+  }
 
-    console.log(temperature, humidity, pressure);
-    // this.currentConditionsDisplay.update(temperature, humidity, pressure);
-    // this.statisticsDisplay.update(temperature, humidity, pressure);
-    // this.forecastDisplay.update(temperature, humidity, pressure);
+  public setMeasurements(
+    temperature: number,
+    humidity: number,
+    pressure: number,
+  ) {
+    this.temperature = temperature;
+    this.humidity = humidity;
+    this.pressure = pressure;
+    this.measurementsChanged();
   }
 }
 
